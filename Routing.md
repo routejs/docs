@@ -2,6 +2,8 @@
 
 In a web application, routing is a process that determines how an application will responds to a particular request.
 
+Routejs provide simple and robust apis for http routing, routejs support named routing, grouped and host based url routing.
+
 Route definition:
 
 ```js
@@ -14,7 +16,6 @@ Where:
 - `PATH` is a request path or an endpoint.
 - `HANDLER` is a function executed when the route path is matched.
 
-Routejs provide simple and robust apis for http routing, routejs support named routing, grouped and host based routing.
 
 ## Example
 
@@ -43,11 +44,11 @@ server.listen(3000);
 - [Named routes](#Named-routes)
 - [Grouped routes](#Grouped-routes)
 - [Host routes](#Host-routes)
-- [Array-based-routing](#Array-based-routing)
+- [Array based routing](#Array-based-routing)
 
 ## Http routes
 
-Routejs support wide range of http methods that are following:
+Routejs support wide range of http methods which are the following:
 - CHECKOUT
 - COPY
 - DELETE
@@ -107,7 +108,7 @@ app.all("/", function (req, res) {
 
 ## Route parameters
 
-Routejs supports route parameters for dynamic routing.
+Routejs supports route parameters, route parameters are used for dynamic routing.
 
 In routejs we can define route parameters using `{}` syntax, we can put any name inside curly brackets and we can access them using `req.params` object.
 
@@ -120,7 +121,7 @@ app.get("/user/{name}", function (req, res) {
 });
 ```
 
-It will match all texts till `/` after `/user/`, for example:
+It will match everything after `/user/` till `/`, for example:
 - `/user/abc`
 - `/user/123`
 - `/user/abc?id=10`
@@ -143,7 +144,7 @@ app.get("/user/{id:(\\d+)}", function (req, res) {
 
 ## Named routes
 
-Routejs supports named routing, we can assign unique name to routes, which can be used to generate url using name.
+Routejs supports named routing, we can assign unique name to routes, which is used to generate url using name.
 
 ```js
 // Set name to route
