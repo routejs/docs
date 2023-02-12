@@ -20,22 +20,9 @@ Where:
 Example:
 
 ```js
-const { Router } = require("@routejs/router");
-const http = require("http");
-
-// Create router app
-const app = new Router();
-
-// Set http routes
 app.get("/", function (req, res) {
   res.end("Ok");
 });
-
-// Register request handler
-const server = http.createServer(app.handler());
-
-// Start http server
-server.listen(3000);
 ```
 
 ## Index
