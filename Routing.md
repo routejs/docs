@@ -17,7 +17,7 @@ Where:
 - `HANDLER` is a function executed when the route path is matched.
 
 
-## Example
+Example:
 
 ```js
 const { Router } = require("@routejs/router");
