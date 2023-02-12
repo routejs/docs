@@ -11,14 +11,40 @@ Middleware functions can be used to perform the following tasks:
 
 If the current middleware function does not end the `request/response` cycle, it must call `next()` function to pass control to the next middleware function.
 
-Types of middlewares in unic framework:
+In routejs everything is middleware, type of middlewares are following:
 - Global middleware
 - Route middleware
-- Error-handling middleware
+- Error-handler middleware
+
+Middleware defination:
+
+```js
+app.use(CALLBACKS);
+```
+
+Where:
+- `CALLBACKS` is the callback function or router instance.
+
+Example:
+
+```js
+app.use(function (req, res, next) {
+  next();
+});
+
+app.use(
+  function (req, res, next) {
+    next();
+  },
+  function (req, res, next) {
+    next();
+  },
+);
+```
 
 ### Global Middleware
 
-Let's create a global middleware.
+Global middleware is a function that called on every request.
 
 ```js
 app.use(function (req, res, next) {
@@ -35,7 +61,7 @@ app.use(function (req, res, next) {
 
 ### Route Middleware
 
-Let's create a route middleware.
+Route middleware is a function that executed when request route is matched.
 
 ```js
 app.get("/",
@@ -50,12 +76,12 @@ app.get("/",
 );
 ```
 
-### Error-handling Middleware
+### Error-handler Middleware
 
-Error-handling middleware is used to handle errors, error-handling middleware always takes four arguments.
+Error-handler middleware is used to handle errors in `request/response` cycle.
+
+Error-handler middleware always takes four arguments, where the first argument is the `error` object.
 You must provide four arguments to identify a middleware as an error-handling middleware function.
-
-Let's create an error-handling middleware.
 
 ```js
 app.use(function (err, req, res, next) {
@@ -63,8 +89,8 @@ app.use(function (err, req, res, next) {
 });
 ```
 
-Routejs catches error and automatically call the error-handling middlewares, but you can manually call error-handling middleware by passing error as an argument in `next()` function.
-If we pass error as an argument in `next()` function, it will skip all middlewares and only calls the error-handling middleware.
+Routejs catches error and automatically call the Error-handler middlewares.
+If we pass error as an argument in `next()` function, it will skip all middlewares and only calls the next error-handler middleware.
 
 ```php
 app.get("/", function (req, res) {
