@@ -43,6 +43,7 @@ server.listen(3000);
 - [Named routes](#Named-routes)
 - [Grouped routes](#Grouped-routes)
 - [Host routes](#Host-routes)
+- [Array-based-routing](#Array-based-routing)
 
 ## Http routes
 
@@ -236,3 +237,40 @@ app.domain("{name}.localhost:3000", function (router) {
   });
 });
 ```
+
+## Array based routing
+
+Routejs is very simple and flexible, it support both object and array based url routing.
+
+Let's create `urls.js` urls file for routes:
+
+```js
+const { path, use } = require("@routejs/router");
+
+// Url routes
+const urls = [
+  path("get", "/", (req, res) => res.end("Ok")),
+  path(["get", "post"], "/blog", (req, res) => res.end("Blog")),
+  // Create 404 page not found error
+  use((req, res) => res.writeHead(404).end("404 Page Not Found")),
+];
+
+module.exports = urls;
+```
+
+Use urls in routejs app:
+
+```javascript
+const { Router } = require("@routejs/router");
+const http = require("http");
+const urls = require("./urls");
+
+const app = new Router();
+
+// Use url routes
+app.use(urls);
+
+http.createServer(app.handler()).listen(3000);
+```
+
+In array based routing `path()` function is used to set http routes. We can also use `all()`, `use()` and `domain()` functions.
