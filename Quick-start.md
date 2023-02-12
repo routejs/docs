@@ -26,7 +26,7 @@ const http = require("http");
 // Create routejs app
 const app = new Router();
 
-// Set routes
+// Set http routes
 app.get("/", function (req, res) {
   res.end("Ok");
 });
@@ -36,7 +36,7 @@ app.use(function (req, res) {
   res.writeHead(404).end("404 Page Not Found");
 });
 
-// Create node http server
+// Create node http server and register request handler
 const server = http.createServer(app.handler())
 
 // Start node http server
