@@ -1,4 +1,4 @@
-## Middleware
+## Middlewares
 
 A Middleware is a small piece of code that is used to alter web application `request/response` cycle, middleware function has access of request, response object and next middleware function in `request/response` cycle. 
 Middlewares are the building block of routejs.
@@ -42,9 +42,13 @@ app.use(
 );
 ```
 
+If we pass skip in `next("skip")` function it will skip all pending middlewares of current route.
+
+If we pass any argument in the `next("my error")` function it will skip all the middlewares and execute the next error-handler middleware and if there is no error-handler middleware it will throw the error.
+
 ### Global Middleware
 
-Global middleware is a function that called on every request.
+Global middleware is a function that is executed on every request.
 
 ```js
 app.use(function (req, res, next) {
@@ -61,7 +65,7 @@ app.use(function (req, res, next) {
 
 ### Route Middleware
 
-Route middleware is a function that executed when request route is matched.
+Route middleware is a function that is executed when request route is matched.
 
 ```js
 app.get("/",
