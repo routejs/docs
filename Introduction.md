@@ -1,7 +1,7 @@
 ## Introduction
 
-Routejs is a fast and lightweight http router for [Node.js](http://nodejs.org).
-Routejs is simple and flexible, it supports both object and array based url routing, and provide simple and robust apis for http routing.
+Routejs is a fast and lightweight http router for [nodejs](http://nodejs.org).
+Routejs is very simple and flexible, it supports both object and array based url routing, and provide simple and robust apis for http routing.
 
 ## Features
 
@@ -68,8 +68,8 @@ http.createServer(app.handler()).listen(3000);
 
 ## Philosophy
 
-Routejs is a fast http routing engine for nodejs. Routejs is highly depends on the middlewares, in routejs everything is a middleware.
+Routejs is a fast http routing engine for nodejs. Routejs is highly depends on the middlewares, in routejs everything is a middleware, wether it's a http route, middleware or error-handler.
 
-In routejs all middlewares are executed one after another in top to bottom order, so make sure to register routes and middlewares in the right order.
+In routejs, middlewares are executed one-after-another from top to bottom, they are executed in the order that they are registered, so make sure to register routes and middlewares in the right order.
 
-It is advisable to register all the global middlewares at the first and register error-handler middleware at the last.
+Global middlewares should be registered first before routes and error-handler middleware should be registered at the last after registering all the routes and middlewares.
