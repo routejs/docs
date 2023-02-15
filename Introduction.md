@@ -1,6 +1,6 @@
 ## Introduction
 
-Routejs is a fast and lightweight http router for [nodejs](http://nodejs.org).
+Routejs is a fast and lightweight http routing engine for [nodejs](http://nodejs.org).
 Routejs is very simple and flexible, it supports both object and array based url routing, and provide simple and robust apis for http routing.
 
 ## Features
