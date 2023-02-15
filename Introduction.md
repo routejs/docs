@@ -6,11 +6,12 @@ Routejs is very simple and flexible, it supports both object and array based url
 ## Features
 
 - Fast and lightweight
-- Named routing
 - Group routing
-- Subdomain based routing
+- Host based routing
+- Named routing
 - Middleware support
 - Object and array based routing
+- Regular expression support
 
 ## Example
 
