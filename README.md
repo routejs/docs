@@ -20,11 +20,12 @@ Routejs is a fast and lightweight http routing engine for [Node.js](http://nodej
 ## Features
 
 - Fast and lightweight
-- Named routing
 - Group routing
-- Subdomain based routing
+- Host based routing
+- Named routing
 - Middleware support
 - Object and array based routing
+- Regular expression support
 
 ## Installation
 
