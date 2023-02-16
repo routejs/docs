@@ -21,21 +21,25 @@ Example:
 
 ```js
 app.get("/", function (req, res) {
-  res.end("Ok");
+  res.end("GET");
+});
+
+app.post("/", function (req, res) {
+  res.end("POST");
 });
 ```
 
 ## Index
-- [Http routes](#Http-routes)
+- [Http methods](#Http-methods)
 - [Route parameters](#Route-parameters)
 - [Named routes](#Named-routes)
-- [Grouped routes](#Grouped-routes)
+- [Group routes](#Group-routes)
 - [Host routes](#Host-routes)
 - [Array based routing](#Array-based-routing)
 
-## Http routes
+## Http methods
 
-Routejs support wide range of http methods which are the following:
+Routejs support wide range of http request methods, all supported http request methods are the following:
 - CHECKOUT
 - COPY
 - DELETE
@@ -66,16 +70,26 @@ Example:
 ```js
 // Handle get http request
 app.get('/', function (req, res) {
-  res.end("Ok");
+  res.end("GET");
 });
 
 // Handle post http request
 app.post("/", function (req, res) {
-  res.end("Ok");
+  res.end("POST");
 });
+
+// OR
+
+app
+  .get('/', function (req, res) {
+    res.end("GET");
+  })
+  .post("/", function (req, res) {
+    res.end("POST");
+  });
 ```
 
-Handle any http methods:
+Handle any http request methods:
 
 ```js
 // Handle get or post http request
@@ -84,7 +98,7 @@ app.any(["get", "post"], "/", function (req, res) {
 });
 ```
 
-Handle all http methods:
+Handle all http request methods:
 
 ```js
 // Handle all http request
@@ -122,6 +136,8 @@ app.get("/user/(\\d+)", function (req, res) {
 });
 ```
 
+Make sure to escape all regular expression special characters.
+
 Named regular expression:
 ```js
 app.get("/user/{id:(\\d+)}", function (req, res) {
@@ -131,7 +147,7 @@ app.get("/user/{id:(\\d+)}", function (req, res) {
 
 ## Named routes
 
-Routejs supports named routing, we can assign unique name to routes, which is used to generate url using name.
+Routejs supports named routing, we can assign unique name to routes, which can be used to generate url using name.
 
 ```js
 // Set name to route
@@ -139,11 +155,11 @@ app.get("/", function (req, res) {
   res.end("Ok");
 }).setName("home");
 
-// Get url of named route
+// Get path of named route
 console.log(app.route("home"))
 ```
 
-## Grouped routes
+## Group routes
 
 In routejs we can group related routes together.
 
