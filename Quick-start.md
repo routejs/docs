@@ -31,6 +31,14 @@ app.get("/", function (req, res) {
   res.end("Ok");
 });
 
+app
+  .post("/", function (req, res) {
+    res.end("POST");
+  })
+  .put("/", function (req, res) {
+    res.end("PUT");
+  });
+
 // Create 404 page not found error
 app.use(function (req, res) {
   res.writeHead(404).end("404 Page Not Found");
