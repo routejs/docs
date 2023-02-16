@@ -176,6 +176,7 @@ Where:
 Example:
 
 ```js
+// Group related routes
 app.group("/blog", function (router) {
   router.get("/read", function (req, res) {
     res.end("Ok");
@@ -185,6 +186,20 @@ app.group("/blog", function (router) {
     res.end("Ok");
   });
 });
+
+// OR
+
+const blog = new Router();
+
+blog
+  .get("/read", function (req, res) {
+    res.end("Ok");
+  })
+  .post("/create", function (req, res) {
+    res.end("Ok");
+  });
+
+app.group("/blog", blog);
 ```
 
 It will generate the following url routes:
