@@ -28,10 +28,12 @@ Where:
 Example:
 
 ```js
+// Middleware with single callback
 app.use(function (req, res, next) {
   next();
 });
 
+// Middleware with multiple callbacks
 app.use(
   function (req, res, next) {
     next();
@@ -44,7 +46,7 @@ app.use(
 
 If we pass `skip` in the `next("skip")` function it will skip all pending middlewares of current route.
 
-If we pass any argument in the `next("my error")` function it will skip all the middlewares and execute the next error-handler middleware and if there is no error-handler middleware it will throw the exception.
+If we pass any argument in the `next("my error")` function it will skip all the middlewares and routes and execute the next error-handler middleware, if there is no error-handler middleware is registered it will throw the exception.
 
 ### Global Middleware
 
