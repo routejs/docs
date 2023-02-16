@@ -220,14 +220,17 @@ Where:
 - `HOST` is a host name.
 - `CALLBACK` is a function that accepts router instance as an argument.
 
-In routejs by default all routes and middlewares are global, which means that are executed on every request.
-If you are using host based routing, please make sure to set the default host for all global routes and middlewares, so that they are executed on every request.
+In routejs by default all routes and middlewares are global, which means they are executed on every request.
+If you are using host based url routing, please make sure to set the default host for all global routes and middlewares, so that they are not executed on every request.
 
+Set default host to all routes and middlewares:
 ```js
 const app = new Router({
   host: "localhost:3000"
 });
 ```
+
+If we set default host to all routes and middlewares then they are executed only when the request host and path is matched.
 
 Example:
 
