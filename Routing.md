@@ -190,7 +190,6 @@ app.group("/blog", function (router) {
 // OR
 
 const blog = new Router();
-
 blog
   .get("/read", function (req, res) {
     res.end("Ok");
@@ -230,7 +229,7 @@ const app = new Router({
 });
 ```
 
-If we set default host to all routes and middlewares then they are executed only when the request host and path is matched.
+If we set default request host to all routes and middlewares, then they are only executed when the request host and path both are matched.
 
 Example:
 
@@ -250,7 +249,7 @@ app.domain("blog.localhost:3000", function (router) {
 
 Host parameters:
 
-Routejs supports named parameters and regular expression in host based routes.
+Routejs supports named parameters and regular expression in host based url routing.
 
 ```js
 app.domain("{name}.localhost:3000", function (router) {
@@ -271,7 +270,8 @@ const { path, use } = require("@routejs/router");
 
 // Url routes
 const urls = [
-  path("get", "/", (req, res) => res.end("Ok")),
+  path("get", "/", (req, res) => res.end("GET")),
+  path("post", "/", (req, res) => res.end("POST")),
   path(["get", "post"], "/blog", (req, res) => res.end("Blog")),
   // Create 404 page not found error
   use((req, res) => res.writeHead(404).end("404 Page Not Found")),
