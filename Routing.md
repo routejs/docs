@@ -2,7 +2,7 @@
 
 In a web application, routing is a process that determines how an application will responds to a particular request.
 
-Routejs provide simple and robust apis for http routing, routejs support named routing, grouped and host based url routing.
+Routejs provide simple and robust apis for http routing, routejs support object and array based routing, named routing, grouped routing and host based url routing.
 
 Route definition:
 
@@ -89,7 +89,7 @@ app
   });
 ```
 
-Handle any http request methods:
+Handle any of the given http request methods:
 
 ```js
 // Handle get or post http request
@@ -124,10 +124,11 @@ app.get("/user/{name}", function (req, res) {
 
 It will match everything after `/user/` till `/`, for example:
 - `/user/abc`
+- `/user/xyz/`
 - `/user/123`
 - `/user/abc?id=10`
 
-Routejs also support all valid regular expression in http routes.
+Routejs also support all valid regular expression in route parameters.
 
 Regular expression:
 ```js
@@ -136,7 +137,7 @@ app.get("/user/(\\d+)", function (req, res) {
 });
 ```
 
-Make sure to escape all regular expression special characters.
+Make sure to escape all regular expression special characters, otherwise you might get wrong result.
 
 Named regular expression:
 ```js
@@ -147,7 +148,7 @@ app.get("/user/{id:(\\d+)}", function (req, res) {
 
 ## Named routes
 
-Routejs supports named routing, we can assign unique name to routes, which can be used to generate url using name.
+Routejs supports named routing, we can assign unique name to url routes, which can be used to generate url using name.
 
 ```js
 // Set name to route
@@ -263,7 +264,7 @@ app.domain("{name}.localhost:3000", function (router) {
 
 Routejs is very simple and flexible, it support both object and array based url routing.
 
-Let's create `urls.js` urls file for routes:
+Let's create `urls.js` urls file for url routes:
 
 ```js
 const { path, use } = require("@routejs/router");
