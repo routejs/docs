@@ -179,6 +179,11 @@ Example:
 ```js
 // Group related routes
 app.group("/blog", function (router) {
+  router.use(function (req, res, next) {
+    // Group middleware
+    next();
+  });
+
   router.get("/read", function (req, res) {
     res.end("Ok");
   });
@@ -192,6 +197,10 @@ app.group("/blog", function (router) {
 
 const blog = new Router();
 blog
+  .use(function (req, res, next) {
+    // Group middleware
+    next();
+  })
   .get("/read", function (req, res) {
     res.end("Ok");
   })
