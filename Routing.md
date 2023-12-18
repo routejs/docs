@@ -141,7 +141,7 @@ Make sure to escape all regular expression special characters, otherwise you mig
 
 Named regular expression:
 ```js
-app.get("/user/:id:(\\d+)", function (req, res) {
+app.get("/user/:id(\\d+)", function (req, res) {
   res.end(req.params.id);
 });
 ```
