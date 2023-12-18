@@ -111,12 +111,12 @@ app.all("/", function (req, res) {
 
 Routejs supports route parameters, route parameters are used for dynamic routing.
 
-In routejs we can define route parameters using `{}` syntax, we can put any name inside curly brackets and we can access them using `req.params` object.
+In routejs we can define route parameters using `:` syntax, we can put any name inside curly brackets and we can access them using `req.params` object.
 
 Example:
 
 ```js
-app.get("/user/{name}", function (req, res) {
+app.get("/user/:name", function (req, res) {
   // Get route parameters using params object
   res.end(req.params.name);
 });
@@ -141,7 +141,7 @@ Make sure to escape all regular expression special characters, otherwise you mig
 
 Named regular expression:
 ```js
-app.get("/user/{id:(\\d+)}", function (req, res) {
+app.get("/user/:id:(\\d+)", function (req, res) {
   res.end(req.params.id);
 });
 ```
@@ -235,7 +235,7 @@ If you are using host based url routing, please make sure to set the default hos
 Set default host to all routes and middlewares:
 ```js
 const app = new Router({
-  host: "localhost:3000"
+  host: "localhost"
 });
 ```
 
@@ -244,13 +244,13 @@ If we set default request host to all routes and middlewares, then they are only
 Example:
 
 ```js
-// Route is only executed when request host is localhost:3000
+// Route is only executed when request host is localhost
 app.get("/", function (req, res) {
   res.end("Ok");
 });
 
-// Route is only executed when request host is blog.localhost:3000
-app.domain("blog.localhost:3000", function (router) {
+// Route is only executed when request host is blog.localhost
+app.domain("blog.localhost", function (router) {
   router.get("/", function (req, res) {
     res.end("Blog");
   });
@@ -262,7 +262,7 @@ Host parameters:
 Routejs supports named parameters and regular expression in host based url routing.
 
 ```js
-app.domain("{name}.localhost:3000", function (router) {
+app.domain(":name.localhost", function (router) {
   router.get("/", function (req, res) {
     res.end(req.subdomains.name);
   });
