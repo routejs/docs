@@ -111,7 +111,9 @@ app.all("/", function (req, res) {
 
 Routejs supports route parameters, route parameters are used for dynamic routing.
 
-In routejs we can define route parameters using `:` syntax, we can put any name inside curly brackets and we can access them using `req.params` object.
+In routejs we can define route parameters using `:` syntax, we can put route parameter name after `:` like `:name` and we can access them using `req.params` object.
+
+In route parameter name only alphabet (a-z and A-Z), numbers (0-9) and _ (underscore) is allowed.
 
 Example:
 
@@ -128,7 +130,7 @@ It will match everything after `/user/` till `/`, for example:
 - `/user/123`
 - `/user/abc?id=10`
 
-Routejs also support all valid regular expression in route parameters.
+Routejs also support all valid regular expression in route parameters. But in routejs regex are only allowed inside `()` brackets.
 
 Regular expression:
 ```js
@@ -145,6 +147,8 @@ app.get("/user/:id(\\d+)", function (req, res) {
   res.end(req.params.id);
 });
 ```
+
+In routejs you can set custom regex for route parameters.
 
 ## Named routes
 
