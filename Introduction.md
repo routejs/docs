@@ -69,7 +69,7 @@ http.createServer(app.handler()).listen(3000);
 
 ## Philosophy
 
-Routejs is a fast http routing engine for nodejs. Routejs is highly depends on the middlewares, in routejs everything is a middleware, wether it's a http route, middleware or error-handler.
+Routejs is a fast http routing engine for nodejs. Routejs highly depends on the middlewares, in routejs everything is a middleware, whether it's a http route, middleware or error-handler.
 
 In routejs, middlewares are executed one-after-another from top to bottom, they are executed in the order that they are registered, so make sure to register routes and middlewares in the right order.
 
